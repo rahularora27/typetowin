@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: '*'
   }));
 
 const expressServer = app.listen(3001, () => {
@@ -14,7 +14,7 @@ const expressServer = app.listen(3001, () => {
 });
 const io = socketio(expressServer, {
     cors: {
-        origin: "http://localhost:5173",
+        origin: "*",
         methods: ["GET", "POST"]
     }
 });
