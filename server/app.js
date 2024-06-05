@@ -21,8 +21,7 @@ const io = socketio(expressServer, {
 const Game = require('./Models/Game');
 const QuotableAPI = require('./QuotableAPI');
 
-const mongoAtlasUri = 'mongodb+srv://admin:admin@cluster0.r8vmcjb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-mongoose.connect(mongoAtlasUri);
+mongoose.connect(process.env.MONGO_URI);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
