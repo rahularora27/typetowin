@@ -4,6 +4,8 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import socket from './config/socketConfig';
 import GameMenu from './components/GameMenu';
 import CreateGame from './components/CreateGame';
+import JoinGame from './components/JoinGame';
+import Game from './components/Game';
 
 const App = () => {
   const [gameState,setGameState] = useState({_id : "",isOpen : false,players : [],words : []});
@@ -28,6 +30,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<GameMenu />} />
         <Route path="/game/create" element={<CreateGame />} />
+        <Route path="/game/join" element={<JoinGame />} />
+        <Route path="/game/:gameID" element={<Game gameState={gameState} />} />
       </Routes>
   );
 }
