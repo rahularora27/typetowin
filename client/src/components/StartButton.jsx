@@ -1,22 +1,29 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import socket from '../config/socketConfig';
 
-const StartBtn = ({player,gameID})=>{
-    const [showBtn,setShowBtn] = useState(true);
-    const {isPartyLeader} = player;
+const StartButton = ({ player, gameID }) => {
+    const [showBtn, setShowBtn] = useState(true);
+    const { isPartyLeader } = player;
 
-    const onClickHandler = e =>{
-        socket.emit('timer',{playerID : player._id,gameID});
+    const onClickHandler = () => {
+        socket.emit('timer', { playerID: player._id, gameID });
         setShowBtn(false);
     }
 
-    return(
-        isPartyLeader && showBtn ? <button type="button" 
-                                           onClick={onClickHandler}
-                                           className="text-xl"
-                                           style={{cursor:'pointer'}}>Start Game</button>
-                                           : null
-    )
+    return (
+        isPartyLeader && showBtn ? (
+            <div className="flex justify-center">
+                <button
+                    type="button"
+                    onClick={onClickHandler}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    style={{ cursor: 'pointer' }}
+                >
+                    Start Game
+                </button>
+            </div>
+        ) : null
+    );
 }
 
-export default StartBtn;
+export default StartButton;

@@ -9,11 +9,11 @@ const Form = ({ isOpen, isOver, gameID }) => {
         if (!isOpen) {
             textInput.current.focus();
         }
-    }, [isOpen])
+    }, [isOpen]);
 
     const resetForm = () => {
         setUserInput("");
-    }
+    };
 
     const onChange = e => {
         let value = e.target.value;
@@ -21,23 +21,32 @@ const Form = ({ isOpen, isOver, gameID }) => {
         if (lastChar === " ") {
             socket.emit('userInput', { userInput, gameID });
             resetForm();
+        } else {
+            setUserInput(value);
         }
-        else
-            setUserInput(e.target.value);
-    }
+    };
+
+    const onKeyPress = e => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            // Do nothing
+            console.log("Enter key press prevented");
+        }
+    };
 
     return (
         <div className="flex justify-center my-3">
             <div className="w-1/3"></div>
             <div className="w-1/3">
-                <form>
+                <form onSubmit={(e) => e.preventDefault()}>
                     <div className="form-group">
                         <input
                             type="text"
                             readOnly={isOpen || isOver}
                             onChange={onChange}
+                            onKeyPress={onKeyPress}
                             value={userInput}
-                            className="w-full px-4 py-2 bg-gray-200 rounded-lg focus:outline-none focus:bg-blue-200"
+                            className="w-full text-xl font-semibold px-4 py-2 bg-gray-100 rounded-md focus:outline-none focus:bg-gray-300"
                             ref={textInput}
                         />
                     </div>
@@ -45,7 +54,7 @@ const Form = ({ isOpen, isOver, gameID }) => {
             </div>
             <div className="w-1/3"></div>
         </div>
-    )
+    );
 }
 
 export default Form;

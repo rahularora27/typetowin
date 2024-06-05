@@ -1,17 +1,17 @@
 import React from 'react';
 
-const typedCorrentlyStyle = {
-    "backgroundColor" : "#34eb77"
+const typedCurrentlyStyle = {
+    "color": "#34eb77"
 }
 
 const getTypedWords = (words,player)=>{
     let typedWords = words.slice(0,player.currentWordIndex);
     typedWords = typedWords.join(" ");
-    return <span style={typedCorrentlyStyle}>{typedWords} </span>
+    return <span style={typedCurrentlyStyle}>{typedWords} </span>
 }
 
 const currentStyle = {
-    "textDecoration" : "underline"
+    
 }
 
 const getCurrentWord = (words,player)=>{

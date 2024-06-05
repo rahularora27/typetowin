@@ -168,10 +168,10 @@ const startGameClock = async (gameID)=>{
     let game = await Game.findById(gameID);
     // get time stamp of when the game started
     game.startTime = new Date().getTime();
-    // save teh game
+    // save the game
     game = await game.save();
     // time is in seconds
-    let time = 120;
+    let time = 30;
     // Start the Game Clock
     let timerID = setInterval(function gameIntervalFunc(){
         // keep countdown going
