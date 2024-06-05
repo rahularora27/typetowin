@@ -8,7 +8,7 @@ const GameMenu = (props) => {
         <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500">
             <div className="text-center p-10 bg-white shadow-lg rounded-lg max-w-md">
                 <h1 className="text-5xl font-extrabold text-gray-900 mb-6">typetowin</h1>
-                <p className="text-lg text-gray-700 mb-8">Race with friends or join an existing game to improve your typing skills while having fun!</p>
+                <p className="text-lg text-gray-700 mb-8">Race with friends to improve your typing skills while having fun!</p>
                 <button 
                     type="button" 
                     onClick={() => navigate('/game/create')}
